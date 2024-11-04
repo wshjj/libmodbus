@@ -13,11 +13,11 @@
 #include "stdint.h"
 #endif
 
-#if defined(_WIN32)
-#include <windows.h>
-#else
-#include <termios.h>
-#endif
+//#if defined(_WIN32)
+//#include <windows.h>
+//#else
+//#include <termios.h>
+//#endif
 
 #define _MODBUS_RTU_HEADER_LENGTH     1
 #define _MODBUS_RTU_PRESET_REQ_LENGTH 6
@@ -54,12 +54,13 @@ typedef struct _modbus_rtu {
     uint8_t stop_bit;
     /* Parity: 'N', 'O', 'E' */
     char parity;
+		struct rt_serial_device* dev;
 #if defined(_WIN32)
     struct win32_ser w_ser;
     DCB old_dcb;
 #else
     /* Save old termios settings */
-    struct termios old_tios;
+//    struct termios old_tios;
 #endif
 #if HAVE_DECL_TIOCSRS485
     int serial_mode;

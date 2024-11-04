@@ -17,7 +17,7 @@
 typedef int ssize_t;
 #endif
 // clang-format on
-#include <config.h>
+//#include <config.h>
 #include <sys/types.h>
 
 #include "modbus.h"
@@ -40,6 +40,21 @@ MODBUS_BEGIN_DECLS
 /* Timeouts in microsecond (0.5 s) */
 #define _RESPONSE_TIMEOUT 500000
 #define _BYTE_TIMEOUT     500000
+
+#define ssize t unsigned int
+#define fd_set unsigned int
+	
+//struct timeval
+//{
+//unsigned int tv_sec;
+//unsigned int tv_usec;
+//};
+
+//struct timespec
+//{
+//unsigned int tv_sec;
+//unsigned int tv_nsec;
+//};
 
 typedef enum {
     _MODBUS_BACKEND_TYPE_RTU = 0,
